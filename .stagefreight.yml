@@ -1,9 +1,52 @@
+# ------------------------------------------------------------------------------
+# GENERATED / ENFORCED BY STAGEFREIGHT GOVERNANCE
+# Source repo: PrPlanIT/MaintenancePolicy
+# Profile: hlhd-docker
+# This .stagefreight.yml is governed, not purely local.
+# To disable governance, detach from the control repo workflow.
+# Manual changes may be overwritten by reconciliation.
+# ------------------------------------------------------------------------------
+
 version: 1
+builds:
+  image:
+    build_args:
+      HTTP_ANTISPAM_VERSION: 0.5.1
+      S3_PROVIDER_VERSION: 1.7.0
+    context: .
+    dockerfile: Dockerfile
+    kind: docker
+    platforms:
+      - linux/amd64
+scribe:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/scribe-docker.yml
+lint:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/lint-generic.yml
+security:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/security.yml
+dependency:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/dependency.yml
+commit:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/commit.yml
+release:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/release.yml
+manifest:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/manifest.yml
+build_cache:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/build_cache.yml
+ci:
+  forge:
+    - gitlab
+  image: docker.cr.pcfae.com/prplanit/stagefreight:latest-dev
+forges:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/forges.yml
+git:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/git.yml
 metadata:
   category: applications
   description:
-    - Synapse with S3 media offload and the HTTP antispam hook, hardened and rootless.
-    - A thin, digest-pinned layer over Element's published Synapse image. Adds media offload to S3-compatible object storage and the antispam hook Draupnir uses, runs as a non-root user with no package installer and no setuid binaries, and replaces the root entrypoint with a direct invocation.
+    - Synapse with S3 media offload and the antispam hook, hardened and rootless.
+    - Container image for Synapse, the reference Matrix homeserver, adding media offload to S3-compatible object storage and the HTTP antispam hook moderation tooling needs. Runs as a non-root user with no package installer and no setuid binaries, and replaces the root entrypoint with a direct invocation.
   license: AGPL-3.0-or-later
   org: HomeLabHD
   title: Synapse
@@ -21,30 +64,10 @@ orgs:
       github: HomeLabHD
       handle: hlhd
     maintainer: HomeLabHD <homelabhelp@gmail.com>
-builds:
-  image:
-    kind: docker
-    context: .
-    dockerfile: Dockerfile
-    build_args:
-      S3_PROVIDER_VERSION: "1.7.0"
-      HTTP_ANTISPAM_VERSION: "0.5.1"
-    platforms:
-      - linux/amd64
-ci:
-  forge:
-    - gitlab
-  image: docker.cr.pcfae.com/prplanit/stagefreight:latest-dev
 publish:
-  dev:
-    tags:
-      - dev-{sha:8}
-      - latest-dev
-  stable:
-    tags:
-      - v{version}
-      - latest
   preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/publish-docker.yml
+registries:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/registries.yml
 repos:
   github-mirror:
     forge: github
@@ -63,11 +86,10 @@ repos:
     roles:
       - primary
     worktree: .
-registries:
-  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/registries.yml
-forges:
-  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/forges.yml
-commit:
-  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/commit.yml
-git:
-  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/git.yml
+stencils:
+  presets:
+    - https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/stencils-base.yml
+    - https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/stencils-status.yml
+    - https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/stencils-docker.yml
+toolchains:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/toolchains.yml
