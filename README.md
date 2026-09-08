@@ -9,6 +9,23 @@ A **rootless, hardened** container image for [Synapse](https://element-hq.github
 <!-- sf:image:start -->
 <!-- sf:image:end -->
 
+### Documentation
+
+| Topic | |
+|-------|-|
+| [Configuration](docs/Configuration.md) | Database requirements, delegation, media storage, the bundled modules and what they need |
+
+### What Matrix is
+
+|                            |                                                                                                     |
+| -------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Federated, not hosted**  | Servers exchange messages directly, so a conversation spans hubs the way email spans providers — no single operator sits in the middle of it |
+| **Your name, your server** | Identities are `@you:example.com`. The domain is the identity, which is why it is delegated from the apex and never changes afterwards |
+| **Encrypted by default**   | End-to-end encryption with cross-signed device verification, so a compromised server still cannot read rooms |
+| **Bridges to everything else** | Application services relay WhatsApp, Signal, Discord, IRC and Slack into ordinary rooms — the one path that replaces a proprietary chat network without asking anyone to switch apps |
+| **Rooms, spaces, threads** | Spaces group rooms, threads keep replies out of the main timeline, and both federate |
+| **Calls**                  | Voice and video via MatrixRTC, which runs beside the homeserver rather than through it |
+
 ### What this image adds
 
 |                          |                                                                                                    |
@@ -21,7 +38,7 @@ A **rootless, hardened** container image for [Synapse](https://element-hq.github
 | **Read-only-rootfs ready** | Bytecode writing is off and everything Synapse writes is a mount, so `readOnlyRootFilesystem: true` holds |
 | **Pinned by digest**     | The base is addressed by digest, not tag — a tag can be re-pushed, a digest cannot |
 
-### Image contents
+## Image contents
 
 <details>
 <summary>Base image &amp; modules (click to expand)</summary>
