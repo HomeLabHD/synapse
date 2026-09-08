@@ -3,10 +3,15 @@
 A **rootless, hardened** container image for [Synapse](https://element-hq.github.io/synapse/) — the reference [Matrix](https://matrix.org/) homeserver — carrying media offload to S3-compatible object storage and the antispam hook moderation tooling needs. A thin, digest-pinned layer over Element's published image: it adds what a self-hosted deployment actually needs, drops the package installer and every setuid binary, and runs as a non-root user with no root code path at all.
 
 <!-- sf:project:start -->
+[![GitHub](https://img.shields.io/badge/GitHub-mirror-181717?logo=github)](https://github.com/HomeLabHD/synapse) [![GitLab](https://img.shields.io/badge/GitLab-source-FC6D26?logo=gitlab)](https://gitlab.prplanit.com/HomeLabHD/synapse) [![license](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/license.svg)](https://github.com/HomeLabHD/synapse/blob/main/LICENSE) [![Open Issues](https://img.shields.io/github/issues/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/issues) [![Open PRs](https://img.shields.io/github/issues-pr/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/pulls) [![Contributors](https://img.shields.io/github/contributors/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/graphs/contributors) [![donate](https://img.shields.io/badge/donate-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/T6T41IT163) [![sponsor](https://img.shields.io/badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/HomeLabHD)
 <!-- sf:project:end -->
 <!-- sf:badges:start -->
+[![release](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/release.svg)](https://github.com/HomeLabHD/synapse/releases) [![build](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/build.svg)](https://gitlab.prplanit.com/HomeLabHD/synapse/-/pipelines) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/commits) [![StageFreight](https://img.shields.io/badge/StageFreight-0.11.0--dev+f09482f-310937?logo=readthedocs&logoColor=white)](https://stagefreight.prplanit.com)
 <!-- sf:badges:end -->
 <!-- sf:image:start -->
+[![GHCR](https://img.shields.io/badge/GHCR-homelabhd%2Fsynapse-181717?logo=github&logoColor=white)](https://github.com/HomeLabHD/synapse/pkgs/container/synapse) [![Docker](https://img.shields.io/badge/Docker-hlhd%2Fsynapse-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/synapse) [![pulls](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/pulls.svg)](https://hub.docker.com/r/hlhd/synapse) [![Harbor](https://img.shields.io/badge/Harbor-hlhd%2Fsynapse-60b932)](https://cr.pcfae.com/harbor/projects)
+
+[![latest](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/release-latest.svg)](https://github.com/HomeLabHD/synapse/pkgs/container/synapse) ![updated](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/release-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/release-size.svg)](https://github.com/HomeLabHD/synapse/pkgs/container/synapse) [![latest-dev](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/dev-latest.svg)](https://github.com/HomeLabHD/synapse/pkgs/container/synapse) ![updated](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/dev-updated.svg) [![size](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/dev-size.svg)](https://github.com/HomeLabHD/synapse/pkgs/container/synapse)
 <!-- sf:image:end -->
 
 ### Documentation
@@ -45,6 +50,7 @@ A **rootless, hardened** container image for [Synapse](https://element-hq.github
 
 Base Image:
 <!-- sf:contents-base:start -->
+[![synapse@sha256 78de1d10bef02e375f861d1cc99f8bedd9381d4f9083ea8b2c22a053477b205f](https://img.shields.io/badge/synapse@sha256-78de1d10bef02e375f861d1cc99f8bedd9381d4f9083ea8b2c22a053477b205f-0078D4?style=flat)](https://github.com/element-hq/synapse/pkgs/container/synapse)
 <!-- sf:contents-base:end -->
 
 Pinned components — see [`components.json`](components.json):
