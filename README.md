@@ -1,4 +1,4 @@
-# 🌐 synapse
+# synapse
 
 A **rootless, hardened** container image for [Synapse](https://element-hq.github.io/synapse/) — the reference [Matrix](https://matrix.org/) homeserver — carrying media offload to S3-compatible object storage and the antispam hook moderation tooling needs. A thin, digest-pinned layer over Element's published image: it adds what a self-hosted deployment actually needs, drops the package installer and every setuid binary, and runs as a non-root user with no root code path at all.
 
