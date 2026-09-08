@@ -1,0 +1,16 @@
+{
+  "_comment": [
+    "Pins for this image. The base is Element's published image addressed by digest; the",
+    "modules come from PyPI. Bumping a pin here is what ships a new image. Upstream source",
+    "is mirrored at HomeLabHD/synapse-core and is not built from."
+  ],
+  "base": {
+    "image": "ghcr.io/element-hq/synapse",
+    "version": "v1.160.0",
+    "digest": "sha256:78de1d10bef02e375f861d1cc99f8bedd9381d4f9083ea8b2c22a053477b205f"
+  },
+  "modules": {
+    "synapse-s3-storage-provider": "1.7.0",
+    "synapse-http-antispam": "0.5.1"
+  }
+}

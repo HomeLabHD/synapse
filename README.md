@@ -1,0 +1,78 @@
+# 🌐 synapse
+
+A **rootless, hardened** container image for [Synapse](https://element-hq.github.io/synapse/) — the reference [Matrix](https://matrix.org/) homeserver — carrying media offload to S3-compatible object storage and the antispam hook moderation tooling needs. A thin, digest-pinned layer over Element's published image: it adds what a self-hosted deployment actually needs, drops the package installer and every setuid binary, and runs as a non-root user with no root code path at all.
+
+<!-- sf:project:start -->
+<!-- sf:project:end -->
+<!-- sf:badges:start -->
+<!-- sf:badges:end -->
+<!-- sf:image:start -->
+<!-- sf:image:end -->
+
+### What this image adds
+
+|                          |                                                                                                    |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- |
+| **S3 media offload**     | `synapse-s3-storage-provider` — keep the media repository in object storage instead of growing a volume without bound. Brings the `s3_media_upload` CLI for migrating media already on disk |
+| **Moderation hook**      | `synapse-http-antispam` — inert until configured, it is what [Draupnir](https://the-draupnir-project.github.io/draupnir-documentation/) uses to reject events *before* the server accepts them, rather than cleaning up afterwards |
+| **No root code path**    | Upstream's image has no `USER` and its entrypoint runs as root to write config and drop privileges. Config comes from the deployment here, so that entrypoint is replaced outright rather than bypassed |
+| **No installer**         | `pip`, `setuptools` and `wheel` are removed after the modules are in. Nothing installs packages at runtime, so the installer is only attack surface |
+| **No setuid binaries**   | Every setuid and setgid bit in the image is stripped. A homeserver needs no path to root |
+| **Read-only-rootfs ready** | Bytecode writing is off and everything Synapse writes is a mount, so `readOnlyRootFilesystem: true` holds |
+| **Pinned by digest**     | The base is addressed by digest, not tag — a tag can be re-pushed, a digest cannot |
+
+### Image contents
+
+<details>
+<summary>Base image &amp; modules (click to expand)</summary>
+
+Base Image:
+<!-- sf:contents-base:start -->
+<!-- sf:contents-base:end -->
+
+Pinned components — see [`components.json`](components.json):
+
+| Component | Source | Version |
+|-----------|--------|---------|
+| base | [element-hq/synapse](https://github.com/element-hq/synapse) (digest-pinned) | `v1.160.0` |
+| media provider | [synapse-s3-storage-provider](https://github.com/matrix-org/synapse-s3-storage-provider) | `1.7.0` |
+| antispam hook | [synapse-http-antispam](https://github.com/maunium/synapse-http-antispam) | `0.5.1` |
+
+</details>
+
+---
+
+## Installation
+
+```bash
+docker pull ghcr.io/homelabhd/synapse:latest
+# or
+docker pull docker.io/hlhd/synapse:latest
+```
+
+Synapse needs a PostgreSQL database **created with `UTF8` encoding and `C` collation** — it verifies this at startup, and the only remedy afterwards is a dump and restore. It serves the client and federation APIs on **8008**; put TLS in front of it and set `x_forwarded: true` so the client address survives the hop.
+
+The container runs as uid **991** with no writable root filesystem, so mount the paths Synapse writes: its data directory (which holds the **signing key** — this server's federation identity, and unrecoverable if lost), the media store unless it is in object storage, and `/tmp`.
+
+Both bundled modules are inert until `homeserver.yaml` names them; see the [module documentation](https://element-hq.github.io/synapse/latest/modules/index.html).
+
+## Contributing
+
+- Fork the repository
+- Submit Pull Requests / Merge Requests
+- [File issues](../../issues/new) with image tag, run/compose command, and environment details
+
+## Credits
+
+* Powered by [Synapse](https://github.com/element-hq/synapse), maintained by Element
+* Upstream source is mirrored at [HomeLabHD/synapse-core](https://gitlab.prplanit.com/HomeLabHD/synapse-core) — kept for source availability, not built from
+
+## Disclaimer
+
+> The Software provided hereunder ("Software") is licensed "as-is," without warranties of any kind — express, implied, or federated to you by a homeserver you have never heard of. The developer makes no promises about functionality, performance, compatibility, security, or availability. Not liable if your state groups grow larger than your storage budget, if a room join drags in a decade of someone else's history, or if removing `pip` gives you such a smug sense of minimalism that you forget where the signing key is backed up.
+
+> Any positive experiences are owed entirely to the folks at Element and the unstoppable force that is the Open Source community. The developer claims no credit for anything that actually goes right.
+
+## License
+
+Synapse is distributed under [AGPL-3.0-or-later, or a commercial licence from Element](https://github.com/element-hq/synapse/blob/develop/LICENSE-AGPL-3.0). This packaging is maintained by HomeLabHD; the unmodified upstream source is mirrored at [synapse-core](https://gitlab.prplanit.com/HomeLabHD/synapse-core).

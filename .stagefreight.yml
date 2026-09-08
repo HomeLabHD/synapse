@@ -1,0 +1,73 @@
+version: 1
+metadata:
+  category: applications
+  description:
+    - Synapse with S3 media offload and the HTTP antispam hook, hardened and rootless.
+    - A thin, digest-pinned layer over Element's published Synapse image. Adds media offload to S3-compatible object storage and the antispam hook Draupnir uses, runs as a non-root user with no package installer and no setuid binaries, and replaces the root entrypoint with a direct invocation.
+  license: AGPL-3.0-or-later
+  org: HomeLabHD
+  title: Synapse
+  topics:
+    - matrix
+    - synapse
+    - homeserver
+    - federation
+    - docker
+orgs:
+  HomeLabHD:
+    aliases:
+      docker: hlhd
+      ghcr: homelabhd
+      github: HomeLabHD
+      handle: hlhd
+    maintainer: HomeLabHD <homelabhelp@gmail.com>
+builds:
+  image:
+    kind: docker
+    context: .
+    dockerfile: Dockerfile
+    build_args:
+      S3_PROVIDER_VERSION: "1.7.0"
+      HTTP_ANTISPAM_VERSION: "0.5.1"
+    platforms:
+      - linux/amd64
+ci:
+  forge:
+    - gitlab
+  image: docker.cr.pcfae.com/prplanit/stagefreight:latest-dev
+publish:
+  dev:
+    tags:
+      - dev-{sha:8}
+      - latest-dev
+  stable:
+    tags:
+      - v{version}
+      - latest
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/publish-docker.yml
+repos:
+  github-mirror:
+    forge: github
+    project: HomeLabHD/synapse
+    roles:
+      - mirror
+      - publish-origin
+    sync:
+      git: true
+      releases: true
+  primary:
+    branches:
+      default: main
+    forge: gitlab
+    project: HomeLabHD/synapse
+    roles:
+      - primary
+    worktree: .
+registries:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/registries.yml
+forges:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/forges.yml
+commit:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/commit.yml
+git:
+  preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/git.yml
