@@ -5,7 +5,7 @@
 # is mirrored at HomeLabHD/synapse-core for availability, not for building.
 #
 # Pinned by digest, not tag: a tag can be re-pushed, a digest cannot.
-ARG SYNAPSE_IMAGE=ghcr.io/element-hq/synapse@sha256:78de1d10bef02e375f861d1cc99f8bedd9381d4f9083ea8b2c22a053477b205f
+ARG SYNAPSE_IMAGE=ghcr.io/element-hq/synapse@sha256:6b84a7bbac36f080b2d2e51e0289cf1b08b349598ea44a558df38d558f2c2311
 FROM ${SYNAPSE_IMAGE}
 
 ARG S3_PROVIDER_VERSION
