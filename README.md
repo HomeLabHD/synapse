@@ -50,7 +50,7 @@ A **rootless, hardened** container image for [Synapse](https://element-hq.github
 
 Base Image:
 <!-- sf:contents-base:start -->
-[![synapse@sha256 78de1d10bef02e375f861d1cc99f8bedd9381d4f9083ea8b2c22a053477b205f](https://img.shields.io/badge/synapse@sha256-78de1d10bef02e375f861d1cc99f8bedd9381d4f9083ea8b2c22a053477b205f-0078D4?style=flat)](https://github.com/element-hq/synapse/pkgs/container/synapse)
+[![synapse@sha256 6b84a7bbac36f080b2d2e51e0289cf1b08b349598ea44a558df38d558f2c2311](https://img.shields.io/badge/synapse@sha256-6b84a7bbac36f080b2d2e51e0289cf1b08b349598ea44a558df38d558f2c2311-0078D4?style=flat)](https://github.com/element-hq/synapse/pkgs/container/synapse)
 <!-- sf:contents-base:end -->
 
 Pinned components — see [`components.json`](components.json):
