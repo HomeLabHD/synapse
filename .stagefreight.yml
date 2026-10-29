@@ -26,6 +26,7 @@ security:
   preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/security.yml
 dependency:
   preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/dependency.yml
+  registry: ghcr-proxy
 commit:
   preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/commit.yml
 release:
@@ -86,6 +87,11 @@ repos:
     roles:
       - primary
     worktree: .
+schedules:
+  upstream-refresh:
+    build: changes
+    cron: 17 11 * * *
+    reason: Daily watch of element-hq/synapse; auto-bump the base on a new GA.
 stencils:
   presets:
     - https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/stencils-base.yml
@@ -96,3 +102,20 @@ toolchains:
   want:
     presets:
       - https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/toolchains-scanners.yml
+upstream:
+  evidence:
+    image:
+      on_mismatch: refuse
+      probe:
+        manager: pip
+        package: matrix-synapse
+  sources:
+    synapse:
+      image: ghcr.io/element-hq/synapse
+      scheme: semver
+      select:
+        prereleases: false
+        tags: ^v(?P<version>\d+\.\d+\.\d+)$
+  version:
+    on_mismatch: refuse
+    track: synapse
