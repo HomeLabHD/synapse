@@ -26,7 +26,6 @@ security:
   preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/security.yml
 dependency:
   preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/dependency.yml
-  registry: ghcr-proxy
 commit:
   preset: https://gitlab.prplanit.com/PrPlanIT/MaintenancePolicy//preset/commit.yml
 release:
