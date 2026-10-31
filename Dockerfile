@@ -7,7 +7,7 @@
 # Pinned by tag and digest: the digest is the immutable identity (a tag can be re-pushed, a
 # digest cannot), and the tag names the version so StageFreight can track element-hq's GA
 # releases and bump the base — tag and digest together — when a new one ships.
-FROM ghcr.io/element-hq/synapse:v1.162.0@sha256:6b84a7bbac36f080b2d2e51e0289cf1b08b349598ea44a558df38d558f2c2311
+FROM ghcr.io/element-hq/synapse:v1.163.2@sha256:c3c21919a322f74d177a43bce8031adc81ef839ddd117a8dd03cfec350e76e02
 
 ARG S3_PROVIDER_VERSION
 ARG HTTP_ANTISPAM_VERSION
