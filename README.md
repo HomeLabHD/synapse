@@ -6,7 +6,7 @@ A **rootless, hardened** container image for [Synapse](https://element-hq.github
 [![GitHub](https://img.shields.io/badge/GitHub-mirror-181717?logo=github)](https://github.com/HomeLabHD/synapse) [![GitLab](https://img.shields.io/badge/GitLab-source-FC6D26?logo=gitlab)](https://gitlab.prplanit.com/HomeLabHD/synapse) [![license](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/license.svg)](https://github.com/HomeLabHD/synapse/blob/main/LICENSE) [![Open Issues](https://img.shields.io/github/issues/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/issues) [![Open PRs](https://img.shields.io/github/issues-pr/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/pulls) [![Contributors](https://img.shields.io/github/contributors/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/graphs/contributors) [![donate](https://img.shields.io/badge/donate-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/T6T41IT163) [![sponsor](https://img.shields.io/badge/sponsor-EA4AAA?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/HomeLabHD)
 <!-- sf:project:end -->
 <!-- sf:badges:start -->
-[![release](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/release.svg)](https://github.com/HomeLabHD/synapse/releases) [![build](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/build.svg)](https://gitlab.prplanit.com/HomeLabHD/synapse/-/pipelines) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/commits) [![StageFreight](https://img.shields.io/badge/StageFreight-0.14.0--dev+2cfbca9-310937?logo=readthedocs&logoColor=white)](https://stagefreight.prplanit.com)
+[![release](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/release.svg)](https://github.com/HomeLabHD/synapse/releases) [![build](https://raw.githubusercontent.com/HomeLabHD/synapse/main/.stagefreight/scribe/build.svg)](https://gitlab.prplanit.com/HomeLabHD/synapse/-/pipelines) [![Last Commit](https://img.shields.io/github/last-commit/HomeLabHD/synapse)](https://github.com/HomeLabHD/synapse/commits) [![StageFreight](https://img.shields.io/badge/StageFreight-0.14.0--dev+c1912bf-310937?logo=readthedocs&logoColor=white)](https://stagefreight.prplanit.com)
 <!-- sf:badges:end -->
 <!-- sf:image:start -->
 [![GHCR](https://img.shields.io/badge/GHCR-homelabhd%2Fsynapse-181717?logo=github&logoColor=white)](https://github.com/HomeLabHD/synapse/pkgs/container/synapse) [![Docker](https://img.shields.io/badge/Docker-hlhd%2Fsynapse-2496ED?logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/synapse) [![pulls](https://img.shields.io/docker/pulls/hlhd/synapse?color=1d63ed&logo=docker&logoColor=white)](https://hub.docker.com/r/hlhd/synapse) [![Harbor](https://img.shields.io/badge/Harbor-hlhd%2Fsynapse-60b932)](https://cr.pcfae.com/harbor/projects)
@@ -50,7 +50,7 @@ A **rootless, hardened** container image for [Synapse](https://element-hq.github
 
 Base Image:
 <!-- sf:contents-base:start -->
-[![synapse v1.162.0](https://img.shields.io/badge/synapse-v1.162.0-0078D4?style=flat)](https://github.com/element-hq/synapse/pkgs/container/synapse)
+[![synapse v1.163.2](https://img.shields.io/badge/synapse-v1.163.2-0078D4?style=flat)](https://github.com/element-hq/synapse/pkgs/container/synapse)
 <!-- sf:contents-base:end -->
 
 Pinned components — see [`components.json`](components.json):
