@@ -14,7 +14,7 @@ ARG HTTP_ANTISPAM_VERSION
 
 LABEL org.opencontainers.image.title="synapse" \
       org.opencontainers.image.description="Synapse with S3 media offload and the HTTP antispam hook, hardened and rootless" \
-      org.opencontainers.image.source="https://gitlab.prplanit.com/HomeLabHD/synapse" \
+      org.opencontainers.image.source="https://git.optcp.com/HomeLabHD/synapse" \
       org.opencontainers.image.licenses="AGPL-3.0-or-later OR LicenseRef-Element-Commercial"
 
 USER root
