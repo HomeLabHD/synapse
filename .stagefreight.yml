@@ -87,10 +87,7 @@ repos:
       - primary
     worktree: .
 schedules:
-  upstream-refresh:
-    build: changes
-    cron: 17 11 * * *
-    reason: Daily watch of element-hq/synapse; auto-bump the base on a new GA.
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/schedules-upstream.yml
 stencils:
   presets:
     - https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/stencils-base.yml
