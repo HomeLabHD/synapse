@@ -18,6 +18,7 @@ builds:
     kind: docker
     platforms:
       - linux/amd64
+  preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/build-docker.yml
 scribe:
   preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/scribe-docker.yml
 lint:
@@ -101,17 +102,15 @@ toolchains:
 upstream:
   evidence:
     image:
+      manager: pip
       on_mismatch: refuse
-      probe:
-        manager: pip
-        package: matrix-synapse
+      package: matrix-synapse
   sources:
     synapse:
       image: ghcr.io/element-hq/synapse
+      prereleases: false
       scheme: semver
-      select:
-        prereleases: false
-        tags: ^v(?P<version>\d+\.\d+\.\d+)$
+      tags: ^v(?P<version>\d+\.\d+\.\d+)$
   version:
     on_mismatch: refuse
     track: synapse
