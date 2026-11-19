@@ -15,9 +15,6 @@ builds:
       S3_PROVIDER_VERSION: 1.7.0
     context: .
     dockerfile: Dockerfile
-    kind: docker
-    platforms:
-      - linux/amd64
   preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/build-docker.yml
 scribe:
   preset: https://git.optcp.com/PrPlanIT/MaintenancePolicy//preset/scribe-docker.yml
@@ -103,14 +100,10 @@ upstream:
   evidence:
     image:
       manager: pip
-      on_mismatch: refuse
       package: matrix-synapse
   sources:
     synapse:
       image: ghcr.io/element-hq/synapse
-      prereleases: false
-      scheme: semver
       tags: ^v(?P<version>\d+\.\d+\.\d+)$
   version:
-    on_mismatch: refuse
     track: synapse
